@@ -1,0 +1,43 @@
+type Product {
+  id: ID!
+  title: String!
+  price: Float!
+  description: String
+  category: String
+  image: String
+}
+
+type ProductEdge {
+  cursor: String!
+  node: Product!
+}
+
+type PageInfo {
+  endCursor: String
+  hasNextPage: Boolean!
+}
+
+type ProductConnection {
+  edges: [ProductEdge]!
+  pageInfo: PageInfo!
+}
+
+type Query {
+  products(first: Int!, after: String): ProductConnection!
+  productSearch(query: String!): [Product]
+}
+
+type CartItem {
+  id: ID!
+  productId: ID!
+  title: String!
+}
+
+type Cart {
+  items: [CartItem]!
+}
+
+type Mutation {
+  addToCart(productId: ID!): Cart
+  removeFromCart(itemId: ID!): Cart
+}
