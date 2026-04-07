@@ -22,11 +22,6 @@ type ProductConnection {
   pageInfo: PageInfo!
 }
 
-type Query {
-  products(first: Int!, after: String): ProductConnection!
-  productSearch(query: String!): [Product]
-}
-
 type CartItem {
   id: ID!
   productId: ID!
@@ -35,6 +30,11 @@ type CartItem {
 
 type Cart {
   items: [CartItem]!
+}
+
+type Query {
+  products(first: Int!, after: String): ProductConnection!
+  productSearch(query: String!): [Product]
 }
 
 type Mutation {
